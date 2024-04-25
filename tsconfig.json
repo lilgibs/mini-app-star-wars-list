@@ -25,7 +25,7 @@
       "paths": {
         "@pages/*": ["src/pages/*"],
         "@assets/*": ["src/assets/*"],
-        "@components/*": ["src/commons/components/*"],
+        "@components/*": ["src/components/*"],
         "@commons/*": ["src/commons/*"],
         "@app/*": ["src/app/*"],
         "@public/*": ["public/*"],
