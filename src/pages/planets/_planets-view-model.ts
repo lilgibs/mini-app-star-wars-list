@@ -66,6 +66,10 @@ export default function usePlanetsViewModel() {
     return () => clearTimeout(timeoutId)
   }, [watch(`q`), watch(`page`)])
 
+  useEffect(() => {
+    setValue(`page`, 1)
+  }, [watch(`q`)])
+
   return {
     data,
     fetchData,
