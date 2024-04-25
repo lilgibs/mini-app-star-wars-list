@@ -1,29 +1,27 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import usePlanetsViewModel, { Result } from "./_planets-view-model"
+import usePeopleViewModel, { Result } from "./_people-view-model"
 import Breadcrumbs from "../../components/breadcrumbs"
 
 const tableHeadColumn = [
   { label: `Name` },
-  { label: `Diameter` },
-  { label: `Orbital Period` },
-  { label: `Rotation Period` },
-  { label: `Surface Water` },
-  { label: `Gravity` },
-  { label: `Population` },
+  { label: `Gender` },
+  { label: `Height` },
+  { label: `Mass` },
+  { label: `Birth Year` },
 ]
 
-export default function PlanetsView() {
-  const model = usePlanetsViewModel()
+export default function PeopleView() {
+  const model = usePeopleViewModel()
 
   return (
-    <div className="h-screen py-6 px-10 flex flex-col gap-4  ">
+    <div className="h-screen py-6 px-10 flex flex-col gap-4">
 
       <Breadcrumbs
         menus={[]}
       />
 
       <div className="bg-gray-950 text-white flex flex-col gap-4 p-6 rounded-lg border-2 border-yellow-400 shadow-md shadow-yellow-400">
-        <h1 className="text-4xl font-bold">Planets</h1>
+        <h1 className="text-4xl font-bold">People</h1>
 
         <div className="flex justify-between items-center bg-slate-800 p-2 px-3">
           <input
@@ -57,22 +55,22 @@ export default function PlanetsView() {
           <table className="divide-y w-full table-fixed">
             <thead className="">
               <tr className="divide-x ">
-                {tableHeadColumn.map(val =>
-                  <th className="py-2 px-3">{val.label}</th>
-                )}
+                <th className="py-2 px-3">Name</th>
+                <th className="py-2 px-3">Gender</th>
+                <th className="py-2 px-3">Height</th>
+                <th className="py-2 px-3">Mass</th>
+                <th className="py-2 px-3">Birth Year</th>
               </tr>
             </thead>
-            <tbody className=" ">
+            <tbody className="divide-y ">
               {model.isSuccess &&
                 model.data?.results?.map((val: Result, index: number) => (
                   <tr className={`divide-x ${index % 2 === 0 && "bg-slate-900"}`}>
                     <td className="py-2 px-3">{val.name}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.diameter))}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.orbital_period))}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.rotation_period))}</td>
-                    <td className="py-2 px-3">{val.surface_water}</td>
-                    <td className="py-2 px-3">{val.gravity}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.population))}</td>
+                    <td className="py-2 px-3">{val.gender}</td>
+                    <td className="py-2 px-3">{val.height}</td>
+                    <td className="py-2 px-3">{val.mass}</td>
+                    <td className="py-2 px-3">{val.birth_year}</td>
                   </tr>
                 ))
               }
