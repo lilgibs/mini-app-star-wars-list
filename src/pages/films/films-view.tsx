@@ -1,31 +1,29 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import usePlanetsViewModel, { Result } from "./_planets-view-model"
+import usePlanetsViewModel, { Result } from "./_films-view-model"
 import Breadcrumbs from "../../components/breadcrumbs"
 
 const tableHeadColumn = [
-  { label: `Name` },
-  { label: `Diameter` },
-  { label: `Orbital Period` },
-  { label: `Rotation Period` },
-  { label: `Surface Water` },
-  { label: `Gravity` },
-  { label: `Population` },
+  { label: `Episode` },
+  { label: `Title` },
+  { label: `Producer` },
+  { label: `Director` },
+  { label: `Realese Date` },
 ]
 
-export default function PlanetsView() {
+export default function FilmsView() {
   const model = usePlanetsViewModel()
 
   return (
-    <div className="h-screen py-6 px-10 flex flex-col gap-4  ">
+    <div className="h-screen py-6 px-10 flex flex-col gap-4">
 
       <Breadcrumbs
         menus={[]}
       />
 
       <div className="bg-gray-950 text-white flex flex-col gap-4 p-6 rounded-lg border-2 border-yellow-400 shadow-md shadow-yellow-400">
-        <h1 className="text-4xl font-bold">Planets</h1>
+        <h1 className="text-4xl font-bold">Films</h1>
 
-        <div className="flex justify-between items-center bg-slate-800 p-2 px-3">
+        <div className="flex justify-between items-center bg-slate-800  p-2 px-3">
           <input
             className="border rounded-lg px-4 py-2 w-[256px] text-gray-950"
             type="text"
@@ -62,17 +60,15 @@ export default function PlanetsView() {
                 )}
               </tr>
             </thead>
-            <tbody className=" ">
+            <tbody className="">
               {model.isSuccess &&
                 model.data?.results?.map((val: Result, index: number) => (
                   <tr className={`divide-x ${index % 2 === 0 && "bg-slate-900"}`}>
-                    <td className="py-2 px-3">{val.name}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.diameter))}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.orbital_period))}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.rotation_period))}</td>
-                    <td className="py-2 px-3">{val.surface_water}</td>
-                    <td className="py-2 px-3">{val.gravity}</td>
-                    <td className="py-2 px-3">{Intl.NumberFormat(`us-US`).format(Number(val.population))}</td>
+                    <td className="py-2 px-3">{val.episode_id}</td>
+                    <td className="py-2 px-3">{val.title}</td>
+                    <td className="py-2 px-3">{val.producer}</td>
+                    <td className="py-2 px-3">{val.director}</td>
+                    <td className="py-2 px-3">{val.release_date}</td>
                   </tr>
                 ))
               }

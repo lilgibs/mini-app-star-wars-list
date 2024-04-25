@@ -25,7 +25,7 @@ export default function PeopleView() {
 
         <div className="flex justify-between items-center bg-slate-800 p-2 px-3">
           <input
-            className="border rounded-lg px-4 py-2 w-[256px]"
+            className="border rounded-lg px-4 py-2 w-[256px] text-gray-950"
             type="text"
             placeholder="Search..."
             {...model.register(`q`)}
@@ -62,7 +62,7 @@ export default function PeopleView() {
                 <th className="py-2 px-3">Birth Year</th>
               </tr>
             </thead>
-            <tbody className="divide-y ">
+            <tbody className="">
               {model.isSuccess &&
                 model.data?.results?.map((val: Result, index: number) => (
                   <tr className={`divide-x ${index % 2 === 0 && "bg-slate-900"}`}>
