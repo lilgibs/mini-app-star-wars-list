@@ -1,4 +1,4 @@
 export const config = {
-  apibaseUrl: "https://swapi.py4e.com",
-  apiAssetUrl: "https://swapi.py4e.com/api",
+  apibaseUrl: "https://swapi.py4e.com/api",
+  apiAssetUrl: "https://swapi.py4e.com",
 };
